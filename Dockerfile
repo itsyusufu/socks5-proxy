@@ -1,9 +1,7 @@
-FROM alpine:latest
+FROM serjs/go-socks5-proxy
 
-RUN apk add --no-cache dante-server
-
-COPY sockd.conf /etc/sockd.conf
+ENV PROXY_PORT=1080
 
 EXPOSE 1080
 
-CMD ["sockd", "-f", "/etc/sockd.conf", "-N", "1"]
+CMD ["/bin/go-socks5-proxy"]
